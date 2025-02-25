@@ -1,2 +1,3 @@
-out
-
+# apple -> **/apple
+# apple/banana -> /apple/banana
+out/

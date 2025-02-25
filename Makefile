@@ -1,6 +1,6 @@
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++17
-SRC := FactoryMethod.cpp AbstractFactory.cpp
+SRC := FactoryMethod.cpp AbstractFactory.cpp Singleton.cpp Prototype.cpp
 OUT_DIR := ./out
 BINARIES := $(patsubst %.cpp, $(OUT_DIR)/%, $(SRC))
 

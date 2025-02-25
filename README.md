@@ -13,4 +13,9 @@
 - Concrete Product
 - Client
 
-#
+# Singleton
+
+- Singleton Class
+- Static Member Variable
+- Static Method (getInstance)
+- Delete Copy Constructor and Assignment Operator
