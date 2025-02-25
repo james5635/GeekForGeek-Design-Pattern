@@ -32,3 +32,10 @@
 - Builder
 - Concrete Builder
 - Product
+
+# Adapter
+
+- Target Interface
+- Adaptee
+- Adapter
+- Client
