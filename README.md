@@ -19,3 +19,16 @@
 - Static Member Variable
 - Static Method (getInstance)
 - Delete Copy Constructor and Assignment Operator
+
+# Prototype
+
+- Prototype Interface
+- Concrete Prototypes
+- Client
+
+# Builder
+
+- Director
+- Builder
+- Concrete Builder
+- Product
