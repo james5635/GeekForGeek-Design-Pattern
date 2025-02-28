@@ -39,3 +39,10 @@
 - Adaptee
 - Adapter
 - Client
+
+# Bridge
+
+- Abstraction
+- Refined Abstraction
+- Implementation
+- Concrete Implementation
