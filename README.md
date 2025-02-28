@@ -46,3 +46,10 @@
 - Refined Abstraction
 - Implementation
 - Concrete Implementation
+
+# Composite
+
+- Component
+- Leaf
+- Composite
+- Client
