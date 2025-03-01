@@ -2,7 +2,10 @@
 int main()
 {
     int x();
-    int (*k)();
-    printf("%d", x);
+    
+    printf("%d", x());
     return 0;
+}
+int x(){
+    return 10;
 }
