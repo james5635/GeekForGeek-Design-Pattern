@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -Wall -Wextra -std=c++17
+CXXFLAGS := -Wall -Wextra -std=c++23
 SRC := FactoryMethod.cpp AbstractFactory.cpp Singleton.cpp Prototype.cpp Builder.cpp Builder_Pizza.cpp Adapter.cpp Bridge.cpp Composite.cpp Composite_Wikipedia.cpp
 OUT_DIR := ./out
 BINARIES := $(patsubst %.cpp, $(OUT_DIR)/%, $(SRC))
