@@ -53,3 +53,15 @@
 - Leaf
 - Composite
 - Client
+- 
+# Decorator
+
+- Component Interface
+- Concrete Component
+- Decorator
+- Concrete Decorator
+
+# Facade 
+- Subsystem Components
+- Facade Class
+- Client
