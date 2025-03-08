@@ -1,0 +1,23 @@
+@startuml
+class Client
+interface AbstractFactory{
+    createProductA()
+    createProductB()
+}
+class Factory1{
+    createProductA()
+    createProductB()
+}
+interface ProductA
+interface ProductB
+class ProductA1
+class ProductB1
+Client --> AbstractFactory
+Client --> ProductA
+Client --> ProductB
+ProductA1 --|> ProductA
+ProductB1 --|> ProductB
+Factory1 --|> AbstractFactory
+Factory1 ..> ProductA1 : <<create>>
+Factory1 ..> ProductB1 : <<create>>
+@enduml
