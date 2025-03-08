@@ -1,6 +1,5 @@
-#include <print>
-#include <string>
 #include <iostream>
+#include <print>
 enum class Direction
 {
     North,
@@ -8,6 +7,31 @@ enum class Direction
     East,
     West
 };
+// Specializing std::formatter for Direction
+template <> struct std::formatter<Direction> : std::formatter<std::string>
+{
+    auto format(Direction d, std::format_context &ctx) const
+    {
+        std::string_view name = "Unknown";
+        switch (d)
+        {
+        case Direction::North:
+            name = "North";
+            break;
+        case Direction::South:
+            name = "South";
+            break;
+        case Direction::East:
+            name = "East";
+            break;
+        case Direction::West:
+            name = "West";
+            break;
+        }
+        return std::formatter<std::string>::format(std::string{name}, ctx);
+    }
+};
+
 class MapSite
 {
   public:
@@ -25,7 +49,7 @@ class Room : public MapSite
     }
     void setSide(Direction d, MapSite *mp)
     {
-        std::println("Room::setside {} ms", 1);
+        std::println("Room::setside {} {}", d, static_cast<void *>(mp));
     }
     virtual void enter()
     {
@@ -52,7 +76,9 @@ class Door : public MapSite
     Door(Room *r1 = nullptr, Room *r2 = nullptr) : room1(r1), room2(r2)
     {
     }
-    virtual void enter() {}
+    virtual void enter()
+    {
+    }
     Door(const Door &) = delete;
     Door &operator=(const Door &) = delete;
 
@@ -65,7 +91,7 @@ class Maze
   public:
     void addRoom(Room *r)
     {
-        std::println("Maze::addRoom {}", 1);
+        std::println("Maze::addRoom {}", static_cast<void *>(r));
     }
     Room *roomNo(int) const
     {
@@ -111,7 +137,7 @@ class MazeGame
         r2->setSide(Direction::North, factory.makeWall());
         r2->setSide(Direction::East, factory.makeWall());
         r2->setSide(Direction::South, factory.makeWall());
-        r2->setSide(Direction :: West, aDoor);
+        r2->setSide(Direction ::West, aDoor);
         return aMaze;
     }
 };

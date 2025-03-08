@@ -1,5 +1,5 @@
-CXX := clang++
-CXXFLAGS := -Wall -Wextra -std=c++23 $(shell pkgconf --cflags fmt) 
+CXX := g++
+CXXFLAGS := -Wall -Wextra -std=c++23 $(shell pkgconf --cflags fmt)
 LDFLAGS := $(shell pkgconf --libs fmt)
 SRC := FactoryMethod.cpp AbstractFactory.cpp Singleton.cpp Prototype.cpp Builder.cpp Builder_Pizza.cpp Adapter.cpp Bridge.cpp \
 		Composite.cpp Composite_Wikipedia.cpp Composite_ProgrammingLanguage.cpp Decorator.cpp Decorator_Wikipedia.cpp \
@@ -17,7 +17,7 @@ $(OUT_DIR):
 uml:
 	plantuml ./UML
 uml-clean:
-	rm ./UML/*.png
+	rm -f ./UML/*.png
 clean: uml-clean
 	rm -rf $(OUT_DIR)
 
