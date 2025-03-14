@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -yq \
     git \
     git-lfs \
     sudo \
-    build-essential libfmt-dev pkgconf plantuml clang file \
+    build-essential libfmt-dev pkgconf plantuml clang clangd file \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Create the gitpod user. UID must be 33333.
