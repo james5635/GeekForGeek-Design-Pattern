@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 
 # Install:
 # - git (and git-lfs), for git operations (to e.g. push your work).
