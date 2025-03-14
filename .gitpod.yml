@@ -1,1 +1,1 @@
-image: ghcr.io/gitpod-io/devcontainers
+image: mcr.microsoft.com/devcontainers/base:alpine-3.20
