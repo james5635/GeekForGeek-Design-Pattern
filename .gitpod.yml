@@ -2,3 +2,7 @@ image:
     file: .gitpod.Dockerfile
 ports:
 - port: 3000
+vscode:
+  extensions:
+    - golang.go
+    - eamodio.gitlens
