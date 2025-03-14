@@ -15,7 +15,8 @@ $(OUT_DIR)/%: %.cpp | $(OUT_DIR)
 $(OUT_DIR):
 	mkdir -p $(OUT_DIR)
 uml:
-	plantuml ./UML
+	# compatible with plantuml version 2020
+	plantuml ./UML/*.puml
 uml-clean:
 	rm -f ./UML/*.png
 clean: uml-clean
