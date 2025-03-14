@@ -3,9 +3,3 @@ image:
 ports:
   - port: 3000
     onOpen: notify
-vscode:
-  extensions:
-    - ms-azuretools.vscode-docker
-    - esbenp.prettier-vscode
-    - dbaeumer.vscode-eslint
-    - bradlc.vscode-tailwindcss
