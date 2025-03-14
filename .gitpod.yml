@@ -1,4 +1,4 @@
-image: ubuntu:latest
+image: mcr.microsoft.com/devcontainers/base:ubuntu
 vscode:
     extensions:
         - svelte.svelte-vscode
