@@ -65,3 +65,8 @@
 - Subsystem Components
 - Facade Class
 - Client
+
+# Flyweight
+- Flyweight Interface
+- Concrete Flyweight
+- Flyweight Factory

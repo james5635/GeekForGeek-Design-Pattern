@@ -54,7 +54,9 @@ class Room : public MapSite
     virtual void enter()
     {
     }
+    // copy constructor
     Room(const Room &) = delete;
+    // assigment operator
     Room &operator=(const Room &) = delete;
 
   private:
