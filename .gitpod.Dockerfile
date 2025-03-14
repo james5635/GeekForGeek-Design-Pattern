@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
         # Needed for Gitpod compatibility:
         git\
         # git-lfs \ # uncomment if needed
