@@ -1,3 +1,3 @@
 FROM gitpod/workspace-full
-RUN apt update
-RUN apt install -y libfmt-dev pkgconf
+RUN sudo apt update
+RUN sudo apt install -y libfmt-dev pkgconf
