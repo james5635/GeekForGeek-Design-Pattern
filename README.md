@@ -75,3 +75,8 @@
 - Subject
 - Real Object
 - Proxy
+
+# Chain Of Responsibility
+- Handler Interface
+- Concrete Handler
+- Client
