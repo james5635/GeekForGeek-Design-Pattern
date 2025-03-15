@@ -70,3 +70,8 @@
 - Flyweight Interface
 - Concrete Flyweight
 - Flyweight Factory
+
+# Proxy
+- Subject
+- Real Object
+- Proxy
