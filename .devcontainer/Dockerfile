@@ -17,13 +17,16 @@ RUN apt-get update && \
 
 # Install oh-my-zsh and plugins
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-  
+
+RUN echo 'root:Docker!' | chpasswd
+# RUN echo 'Docker!\nDocker!' | passwd root 
+
 RUN <<EOF
     groupadd --gid 1000 devcontainer
     useradd --uid 1000 --gid 1000 --shell /bin/zsh --create-home devcontainer
 EOF
 # Copy the .zshrc configuration file
-COPY <<'EOF' /root/.zshrc
+COPY <<'EOF' /home/devcontainer/.zshrc
     export ZSH=$HOME/.oh-my-zsh
     ZSH_THEME="random"
     plugins=(git)
@@ -31,6 +34,6 @@ COPY <<'EOF' /root/.zshrc
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
-
+USER devcontainer
 # Set the default shell to zsh
 CMD ["zsh"]
