@@ -1,27 +1,36 @@
-FROM alpine:3.21
-RUN apk update --no-cache && \
-    apk add --no-cache \
+FROM debian:bookworm
+
+# Update package list and install required packages
+RUN apt-get update && \
+    apt-get install -y \
     bash \
     git \
-    build-base \
-    fmt-dev \
+    build-essential \
     pkgconf \
     plantuml \
     clang \
-    clang-extra-tools \
     file \
     zsh \
-    oh-my-zsh \
-    zsh-autosuggestions \
     zsh-syntax-highlighting \
-    zsh-vcs
+    zsh-autosuggestions \
+    curl
+
+# Install oh-my-zsh and plugins
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+  
+RUN <<EOF
+    groupadd --gid 1000 devcontainer
+    useradd --uid 1000 --gid 1000 --shell /bin/zsh --create-home devcontainer
+EOF
+# Copy the .zshrc configuration file
 COPY <<'EOF' /root/.zshrc
-    export ZSH=/usr/share/oh-my-zsh
-    # ZSH_THEME="robbyrussell"
+    export ZSH=$HOME/.oh-my-zsh
     ZSH_THEME="random"
     plugins=(git)
     source $ZSH/oh-my-zsh.sh
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
+
+# Set the default shell to zsh
 CMD ["zsh"]
