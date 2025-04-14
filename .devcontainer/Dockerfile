@@ -17,11 +17,12 @@ RUN apt-get update && \
     curl \
     unzip \
     sudo \
-    software-properties-common 
+    software-properties-common \
+    libfmt-dev
     
 RUN <<EOF
     echo 'root:Docker2025' | chpasswd
-    # echo 'Docker!\nDocker!' | passwd root 
+    echo 'dog\ndog' | passwd devcontainer 
 
     groupadd --gid 1000 devcontainer
     useradd --uid 1000 --gid 1000 --groups sudo --shell /bin/zsh --create-home devcontainer
