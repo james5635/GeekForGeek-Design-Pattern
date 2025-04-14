@@ -46,7 +46,7 @@ COPY <<'EOF' /home/devcontainer/.zshrc
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
 
-COPY << 'EOF' /home/devcontainer/.bashrc
+COPY <<'EOF' /home/devcontainer/.bashrc
     export PATH=$PATH:~/.local/bin/
     THEME_DIR="$HOME/.cache/oh-my-posh/themes"
     # Pick a random theme
