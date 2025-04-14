@@ -1,5 +1,7 @@
 #include <iostream>
-#include <print>
+#include <string>
+#include <string_view>
+
 enum class Direction
 {
     North,
@@ -7,30 +9,24 @@ enum class Direction
     East,
     West
 };
-// Specializing std::formatter for Direction
-template <> struct std::formatter<Direction> : std::formatter<std::string>
+
+// Helper function to convert Direction to string
+std::string directionToString(Direction d)
 {
-    auto format(Direction d, std::format_context &ctx) const
+    switch (d)
     {
-        std::string_view name = "Unknown";
-        switch (d)
-        {
-        case Direction::North:
-            name = "North";
-            break;
-        case Direction::South:
-            name = "South";
-            break;
-        case Direction::East:
-            name = "East";
-            break;
-        case Direction::West:
-            name = "West";
-            break;
-        }
-        return std::formatter<std::string>::format(std::string{name}, ctx);
+    case Direction::North:
+        return "North";
+    case Direction::South:
+        return "South";
+    case Direction::East:
+        return "East";
+    case Direction::West:
+        return "West";
+    default:
+        return "Unknown";
     }
-};
+}
 
 class MapSite
 {
@@ -38,6 +34,7 @@ class MapSite
     virtual void enter() = 0;
     virtual ~MapSite() = default;
 };
+
 class Room : public MapSite
 {
   public:
@@ -49,19 +46,20 @@ class Room : public MapSite
     }
     void setSide(Direction d, MapSite *mp)
     {
-        std::println("Room::setside {} {}", d, static_cast<void *>(mp));
+        std::cout << "Room::setSide " << directionToString(d) << " " << mp << std::endl;
     }
     virtual void enter()
     {
     }
     // copy constructor
     Room(const Room &) = delete;
-    // assigment operator
+    // assignment operator
     Room &operator=(const Room &) = delete;
 
   private:
     int roomNumber;
 };
+
 class Wall : public MapSite
 {
   public:
@@ -72,6 +70,7 @@ class Wall : public MapSite
     {
     }
 };
+
 class Door : public MapSite
 {
   public:
@@ -88,18 +87,20 @@ class Door : public MapSite
     Room *room1;
     Room *room2;
 };
+
 class Maze
 {
   public:
     void addRoom(Room *r)
     {
-        std::println("Maze::addRoom {}", static_cast<void *>(r));
+        std::cout << "Maze::addRoom " << r << std::endl;
     }
     Room *roomNo(int) const
     {
         return nullptr;
     }
 };
+
 class MazeFactory
 {
   public:
@@ -122,6 +123,7 @@ class MazeFactory
         return new Door(r1, r2);
     }
 };
+
 class MazeGame
 {
   public:
@@ -139,10 +141,11 @@ class MazeGame
         r2->setSide(Direction::North, factory.makeWall());
         r2->setSide(Direction::East, factory.makeWall());
         r2->setSide(Direction::South, factory.makeWall());
-        r2->setSide(Direction ::West, aDoor);
+        r2->setSide(Direction::West, aDoor);
         return aMaze;
     }
 };
+
 int main()
 {
     MazeGame game;

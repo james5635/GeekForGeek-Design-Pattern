@@ -7,6 +7,7 @@ RUN apt-get update && \
     bash \
     git \
     build-essential \
+    gcc-doc \
     pkgconf \
     plantuml \
     clang \
@@ -17,6 +18,7 @@ RUN apt-get update && \
     curl \
     unzip \
     sudo \
+    man-db \
     software-properties-common \
     libfmt-dev
     

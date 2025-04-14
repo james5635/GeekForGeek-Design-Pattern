@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
-#include <print>
+// #include <print>
+#include <fmt/core.h>
 class Beverage
 {
   public:
@@ -12,7 +13,7 @@ class Coffee : public Beverage
   public:
     virtual void drink() override
     {
-        std::print("Drinking Coffee");
+        fmt::print("Drinking Coffee");
     }
 };
 class Soda : public Beverage
@@ -20,7 +21,7 @@ class Soda : public Beverage
   public:
     virtual void drink() override
     {
-        std::print("Drinking Soda");
+        fmt::print("Drinking Soda");
     }
 };
 class BeverageDecorator : public Beverage
@@ -54,7 +55,7 @@ class Milk : public BeverageDecorator
     virtual void drink() override
     {
         callComponentDrink();
-        std::print(", with milk of richness {}% ", percentage);
+        fmt::print(", with milk of richness {}% ", percentage);
     }
 
   private:
@@ -74,7 +75,7 @@ class IceCubes : public BeverageDecorator
     {
 
         callComponentDrink();
-        std::print(", with {} ice cubes", count);
+        fmt::print(", with {} ice cubes", count);
     }
 
   private:
@@ -89,7 +90,7 @@ class Sugar : public BeverageDecorator
     virtual void drink() override
     {
         callComponentDrink();
-        std::print(", with {} spoons of sugar", spoons);
+        fmt::print(", with {} spoons of sugar", spoons);
     }
 
   private:
@@ -102,7 +103,7 @@ int main()
     soda = std::make_unique<Sugar>(std::move(soda), 1);
 
     soda->drink();
-    std::println();
+    fmt::print("\n");
 
     std::unique_ptr<Beverage> coffee = std::make_unique<Coffee>();
     coffee = std::make_unique<IceCubes>(std::move(coffee), 16);

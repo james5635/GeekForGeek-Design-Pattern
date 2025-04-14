@@ -23,7 +23,7 @@ void CPU::Jump(long postion)
 }
 void CPU::Execute()
 {
-    fmt::println("Executing...");
+    fmt::print("Executing...\n");
 }
 struct HardDrive
 {
