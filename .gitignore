@@ -1,5 +1,5 @@
 
-.devcontainer/Dockerfile-alpine
+/.devcontainer/Dockerfile-alpine
 
 # apple -> **/apple
 # apple/banana -> /apple/banana
