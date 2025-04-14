@@ -26,6 +26,7 @@ RUN <<EOF
     useradd --uid 1000 --gid 1000 --groups sudo --shell /bin/zsh --create-home devcontainer
 
     add-apt-repository -y -U http://deb.debian.org/debian -c non-free-firmware -c non-free -c contrib 
+    !!
 EOF
 
 USER devcontainer
