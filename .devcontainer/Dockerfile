@@ -15,6 +15,7 @@ RUN apt-get update && \
     zsh-syntax-highlighting \
     zsh-autosuggestions \
     curl \
+    unzip \
     sudo \
     software-properties-common 
     
