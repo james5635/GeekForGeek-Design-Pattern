@@ -94,3 +94,9 @@
 - Context
 - Client
 - Interpreter
+
+# Mediator
+- Mediator
+- Colleague
+- Concrete Mediator
+- Concrete Colleague
