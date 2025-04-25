@@ -105,3 +105,9 @@
 - Originator
 - Memento
 - Caretaker
+
+# Observer
+- Subject
+- Observer
+- Concrete Subject
+- Concrete Observer
