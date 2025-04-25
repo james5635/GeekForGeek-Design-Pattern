@@ -100,3 +100,8 @@
 - Colleague
 - Concrete Mediator
 - Concrete Colleague
+
+# Memento
+- Originator
+- Memento
+- Caretaker
