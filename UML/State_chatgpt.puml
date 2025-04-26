@@ -1,0 +1,34 @@
+@startuml
+' Define interface
+interface DocumentState {
+    +submitForReview()
+    +publish()
+    +archive()
+    +name() : string
+}
+
+' Define concrete states
+class DraftState
+class ReviewState
+class PublishedState
+class ArchivedState
+
+' Document class
+class Document {
+    -state: DocumentState
+    +setState()
+    +submitForReview()
+    +publish()
+    +archive()
+    +showState()
+}
+
+' Relationships
+DocumentState <|-- DraftState
+DocumentState <|-- ReviewState
+DocumentState <|-- PublishedState
+DocumentState <|-- ArchivedState
+
+Document o-- DocumentState
+
+@enduml
