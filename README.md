@@ -116,3 +116,8 @@
 - Context
 - State
 - ConcreteState
+
+# Strategy
+- Context
+- Strategy Interface
+- Concrete Strategy
