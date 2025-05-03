@@ -128,3 +128,10 @@
 - Concrete Class
 - Template or Base Class
 - Client
+
+# Visitor
+- Visitor Interface
+- Concrete Visitor
+- Element Interface
+- Concrete Element
+- Object Structure
