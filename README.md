@@ -121,3 +121,10 @@
 - Context
 - Strategy Interface
 - Concrete Strategy
+
+# Template
+- Template Method
+- Abstract Method
+- Concrete Class
+- Template or Base Class
+- Client
