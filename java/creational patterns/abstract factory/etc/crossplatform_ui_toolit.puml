@@ -1,4 +1,6 @@
 @startuml
+' skinparam linetype ortho
+
 interface Widget{
     {abstract} +render(): void
 }
@@ -99,9 +101,9 @@ LinuxTextField ..|> TextField
 LinuxUIFactory ..|> UIFactory
 MacOSUIFactory ..|> UIFactory
 WindowsUIFactory ..|> UIFactory
-Client --> Button
-Client --> Checkbox
-Client --> TextField
-Client --> UIFactory
+Client --> "-button" Button 
+Client --> "-checkbox" Checkbox
+Client --> "-textfield" TextField
+Client --> "-uifactory" UIFactory
 OS ..+ Client
 @enduml
