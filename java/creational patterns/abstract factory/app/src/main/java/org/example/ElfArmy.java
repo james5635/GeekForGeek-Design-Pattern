@@ -1,0 +1,10 @@
+package org.example;
+
+public class ElfArmy implements Army {
+    static final String DESCRIPTION = "this is the elven army";
+
+    @Override
+    public String getDescription() {
+        return DESCRIPTION;
+    }
+}
