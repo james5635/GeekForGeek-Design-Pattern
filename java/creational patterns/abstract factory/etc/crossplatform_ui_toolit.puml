@@ -1,0 +1,107 @@
+@startuml
+interface Widget{
+    {abstract} +render(): void
+}
+interface Checkbox{
+    {abstract} +check(): void
+}
+interface Button{
+    {abstract} +resize(): void
+}
+interface TextField{
+    {abstract} +changeTextColor(): void
+}
+interface UIFactory{
+    {abstract} +createButton(): Button
+    {abstract} +createCheckbox(): Checkbox
+    {abstract} +createTextField(): TextField
+}
+
+class LinuxUIFactory{
+    +createButton(): Button
+    +createCheckbox(): Checkbox
+    +createTextField(): TextField
+}
+
+class WindowsUIFactory{
+    +createButton(): Button
+    +createCheckbox(): Checkbox
+    +createTextField(): TextField
+}
+
+class MacOSUIFactory{
+    +createButton(): Button
+    +createCheckbox(): Checkbox
+    +createTextField(): TextField
+}
+
+class LinuxButton{
+    +render(): void
+    +resize(): void
+}
+class MacOSButton{
+    +render(): void
+    +resize(): void
+}
+class WindowsButton{
+    +render(): void
+    +resize(): void
+}
+
+class LinuxCheckbox{
+    +render(): void
+    +check(): void
+}
+class MacOSCheckbox{
+    +render(): void
+    +check(): void
+}
+class WindowsCheckbox{
+    +render(): void
+    +check(): void
+}
+class LinuxTextField{
+    +render(): void
+    +changeTextColor(): void
+}
+class MacOSTextField{
+    +render(): void
+    +changeTextColor(): void
+}
+class WindowsTextField{
+    +render(): void
+    +changeTextColor(): void
+}
+class Client{
+    -button: Button
+    -checkbox: Checkbox
+    -textfield: TextField
+    -uifactory: UIFactory
+    +Client(os: OS)
+}
+enum OS {
+    Windows
+    MacOS
+    Linux
+}
+Button ..|> Widget
+Checkbox ..|> Widget
+TextField ..|> Widget
+WindowsButton ..|> Button
+MacOSButton ..|> Button
+LinuxButton ..|> Button
+WindowsCheckbox ..|> Checkbox
+MacOSCheckbox ..|> Checkbox
+LinuxCheckbox ..|> Checkbox
+WindowsTextField ..|> TextField
+MacOSTextField ..|> TextField
+LinuxTextField ..|> TextField
+LinuxUIFactory ..|> UIFactory
+MacOSUIFactory ..|> UIFactory
+WindowsUIFactory ..|> UIFactory
+Client --> Button
+Client --> Checkbox
+Client --> TextField
+Client --> UIFactory
+OS ..+ Client
+@enduml
