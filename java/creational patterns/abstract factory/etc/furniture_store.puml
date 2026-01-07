@@ -1,0 +1,88 @@
+@startuml
+
+interface Chair{
+    {abstract} +getMaterial(): String
+    {abstract} +setMaterial(m: String): void
+}
+interface Sofa{
+    {abstract} +getColor(): String
+    {abstract} +setColor(c: String): void
+}
+interface CoffeeTable{
+    {abstract} +getWeight(): int
+    {abstract} +setWeight(w: int): void
+}
+
+class ModernChair{
+    -material: String
+    +getMaterial(): String
+    +setMaterial(m: String): void
+}
+class ModernSofa{
+    -color: String
+    +getColor(): String
+    +setColor(c: String): void
+}
+class ModernCoffeeTable{
+    -weight: int
+    +getWeight(): int
+    +setWeight(w: int): void
+}
+
+class VictorianChair{
+    -material: String
+    +getMaterial(): String
+    +setMaterial(m: String): void
+}
+class VictorianSofa{
+    -color: String
+    +getColor(): String
+    +setColor(c: String): void
+}
+class VictorianCoffeeTable{
+    -weight: int
+    +getWeight(): int
+    +setWeight(w: int): void
+}
+interface FurnitureFactory{
+    {abstract} +createChair(): Chair
+    {abstract} +createSofa(): Sofa
+    {abstract} +createCoffeeTable(): CoffeeTable
+}
+class ModernFurnitureFactory{
+    +createChair(): Chair
+    +createSofa(): Sofa
+    +createCoffeeTable(): CoffeeTable
+}
+class VictorianFurnitureFactory{
+    +createChair(): Chair
+    +createSofa(): Sofa
+    +createCoffeeTable(): CoffeeTable
+}
+class Client{
+    -chair: Button
+    -sofa: Checkbox
+    -coffeeTable: TextField
+    -funitureFactory: FurnitureFactory
+    +Style(style: Style)
+}
+enum Style {
+    Modern
+    Victorian
+}
+
+
+ModernChair ..|> Chair
+VictorianChair ..|> Chair
+ModernSofa ..|> Sofa
+VictorianSofa ..|> Sofa
+ModernCoffeeTable ..|> CoffeeTable
+VictorianCoffeeTable ..|> CoffeeTable
+ModernFurnitureFactory ..|> FurnitureFactory
+VictorianFurnitureFactory ..|> FurnitureFactory
+Client --> "-chair" Chair
+Client --> "-sofa" Sofa
+Client --> "-coffeeTable" CoffeeTable
+Client --> "-furnitureFactory" FunitureFactory
+Style ..+ Client
+@enduml

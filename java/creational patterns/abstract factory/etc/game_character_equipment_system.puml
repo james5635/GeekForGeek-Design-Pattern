@@ -1,0 +1,88 @@
+@startuml
+
+interface Armor{
+    {abstract} +getName(): String
+    {abstract} +setName(n: String): void
+}
+interface Mount{
+    {abstract} +getName(): String
+    {abstract} +setName(n: String): void
+}
+interface Weapon{
+    {abstract} +getName(): int
+    {abstract} +setName(n: int): void
+}
+
+class ElfArmor{
+    -name: String
+    +getName(): String
+    +setName(n: String): void
+}
+class ElfMount{
+    -name: String
+    +getName(): String
+    +setName(n: String): void
+}
+class ElfWeapon{
+    -name: int
+    +getName(): int
+    +setName(n: int): void
+}
+
+class OrcArmor{
+    -name: String
+    +getName(): String
+    +setName(n: String): void
+}
+class OrcMount{
+    -name: String
+    +getName(): String
+    +setName(n: String): void
+}
+class OrcWeapon{
+    -name: int
+    +getName(): int
+    +setName(n: int): void
+}
+interface RaceEquipmentFactory{
+    {abstract} +createArmor(): Armor
+    {abstract} +createMount(): Mount
+    {abstract} +createWeapon(): Weapon
+}
+class ElfEquipmentFactory{
+    +createArmor(): Armor
+    +createMount(): Mount
+    +createWeapon(): Weapon
+}
+class OrcEquipmentFactory{
+    +createArmor(): Armor
+    +createMount(): Mount
+    +createWeapon(): Weapon
+}
+class Client{
+    -armor: Armor
+    -mount: Mount
+    -weapon: Weapon
+    -raceEquipmentFactory: RaceEquipmentFactory
+    +CharacterRace(cr: CharacterRace)
+}
+enum CharacterRace {
+    Elf
+    Orc
+}
+
+
+ElfArmor ..|> Armor
+OrcArmor ..|> Armor
+ElfMount ..|> Mount
+OrcMount ..|> Mount
+ElfWeapon ..|> Weapon
+OrcWeapon ..|> Weapon
+ElfEquipmentFactory ..|> RaceEquipmentFactory
+OrcEquipmentFactory ..|> RaceEquipmentFactory
+Client --> "-armor" Armor
+Client --> "-mount" Mount
+Client --> "-weapon" Weapon
+Client --> "-raceEquipmentFactory" RaceEquipmentFactory
+CharacterRace ..+ Client
+@enduml
