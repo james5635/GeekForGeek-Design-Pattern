@@ -1,0 +1,77 @@
+@startuml
+
+interface InvoiceGenerator{
+    +DESCRIPTION: String
+    {abstract} getDescription(): String
+}
+interface PaymentProcessor{
+    +DESCRIPTION: String
+    {abstract} getDescription(): String
+}
+interface RefundProcessor{
+    +DESCRIPTION: String
+    {abstract} getDescription(): String
+}
+
+class PayPalInvoiceGenerator{
+    getDescription(): String
+}
+class PayPalPaymentProcessor{
+    getDescription(): String
+}
+class PayPalRefundProcessor{
+    getDescription(): String
+}
+
+class StripeInvoiceGenerator{
+    getDescription(): String
+}
+class StripePaymentProcessor{
+    getDescription(): String
+}
+class StripeRefundProcessor{
+    getDescription(): String
+}
+
+interface PaymentGatewayFactory{
+    {abstract} +createInvoiceGenerator(): InvoiceGenerator
+    {abstract} +createPaymentProcessor(): PaymentProcessor
+    {abstract} +createRefundProcessor(): RefundProcessor
+}
+class PayPalFactory{
+    +createInvoiceGenerator(): InvoiceGenerator
+    +createPaymentProcessor(): PaymentProcessor
+    +createRefundProcessor(): RefundProcessor
+}
+class StripeFactory{
+    +createInvoiceGenerator(): InvoiceGenerator
+    +createPaymentProcessor(): PaymentProcessor
+    +createRefundProcessor(): RefundProcessor
+}
+class Client{
+    -invoiceGenerator: InvoiceGenerator
+    -paymentProcessor: PaymentProcessor
+    -refundProcessor: RefundProcessor
+    -paymentGatewayFactory: PaymentGatewayFactory
+    +Provider(p: Provider)
+}
+enum Provider {
+    PayPal
+    Stripe
+}
+
+
+PayPalInvoiceGenerator ..|> InvoiceGenerator
+StripeInvoiceGenerator ..|> InvoiceGenerator
+PayPalPaymentProcessor ..|> PaymentProcessor
+StripePaymentProcessor ..|> PaymentProcessor
+PayPalRefundProcessor ..|> RefundProcessor
+StripeRefundProcessor ..|> RefundProcessor
+PayPalFactory ..|> PaymentGatewayFactory
+StripeFactory ..|> PaymentGatewayFactory
+Client --> "-invoiceGenerator" InvoiceGenerator
+Client --> "-paymentProcessor" PaymentProcessor
+Client --> "-refundProcessor" RefundProcessor
+Client --> "-paymentGatewayFactory" PaymentGatewayFactory
+Provider ..+ Client
+@enduml
