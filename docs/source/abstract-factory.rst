@@ -1,12 +1,53 @@
 Abstract Factory Design Pattern
 ===============================
 
+Introduction
+------------
+
+Abstract Factory pattern provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+Abstract Factory pattern is also known as Kit.
+
 UML Class Diagram
 -----------------
 
 .. image:: ./_static/abstract_factory.drawio.png
     :align: center
 
+
+Participant
+-----------
+
+- AbstractFactory
+- ConcreteFactory
+- AbstractProduct
+- ConcreteProduct
+- Client
+
+Usage
+-----
+
+Use the Abstract Factory pattern when:
+
+- a system should be independent of how its products are created, composed, and represented.
+- a system should be configured with one of multiple families of products.
+- a family of related product objects is designed to be used together, and you need to enforce this constraint.
+- you want to provide a class library of products, and you want to reveal just their interfaces, not their implementations.
+
+Consequence
+-----------
+
+- It isolates concrete classes.
+- It makes exchanging product families easy.
+- It promotes consistency among products.
+- Supporting new kinds of products is difficult.
+
+Implementations
+---------------
+
+- Factories as singletons
+- Creating the products.
+- Defining extensible factories.
 
 Example
 -------

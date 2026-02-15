@@ -20,3 +20,10 @@ html.sidebar-hidden .wy-nav-side {
 html.sidebar-hidden .wy-nav-content-wrap {
     margin-left: 0 !important;
 }
+
+/* 
+you cannot change font-size of pre, but you can with span in pre
+*/
+.highlight pre span {
+    font-size: 800%;
+}
