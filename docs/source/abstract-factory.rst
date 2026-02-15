@@ -42,8 +42,8 @@ Consequence
 - It promotes consistency among products.
 - Supporting new kinds of products is difficult.
 
-Implementations
----------------
+Implementation
+--------------
 
 - Factories as singletons
 - Creating the products.

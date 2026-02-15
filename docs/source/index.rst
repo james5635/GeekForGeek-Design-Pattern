@@ -12,3 +12,4 @@ Design Pattern documentation
    :caption: Contents:
 
    abstract-factory
+   builder
