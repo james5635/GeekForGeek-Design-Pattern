@@ -6,10 +6,7 @@
 Design Pattern documentation
 ============================
 
-
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   abstract-factory
-   builder
+   creational/index

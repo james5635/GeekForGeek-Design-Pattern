@@ -11,7 +11,7 @@ Abstract Factory pattern is also known as Kit.
 UML Class Diagram
 -----------------
 
-.. image:: ./_static/abstract_factory.drawio.png
+.. image:: ../_static/abstract_factory.drawio.png
     :align: center
 
 
@@ -48,6 +48,69 @@ Implementation
 - Factories as singletons
 - Creating the products.
 - Defining extensible factories.
+
+Sample Code
+-----------
+
+.. code-block:: cpp
+
+    // AbstractFactory
+    class MazeFactory {
+    public:
+        MazeFactory();
+        virtual Maze* MakeMaze() const // => Maze =? AbstractProduct
+            { return new Maze; }
+        virtual Wall* MakeWall() const // Wall => AbstractProduct
+            { return new Wall; }
+        virtual Room* MakeRoom(int n) const // Room => AbstractProduct
+            { return new Room(n); }
+        virtual Door* MakeDoor(Room* r1, Room* r2) const // Door => AbstractProduct
+            { return new Door(r1, r2); }
+    };
+
+    // Client
+    Maze* MazeGame::CreateMaze (MazeFactory& factory) {
+        Maze* aMaze = factory.MakeMaze();
+        Room* r1 = factory.MakeRoom(1);
+        Room* r2 = factory.MakeRoom(2);
+        Door* aDoor = factory.MakeDoor(r1, r2);
+        aMaze->AddRoom(r1);
+        aMaze->AddRoom(r2);
+        r1->SetSide(North, factory.MakeWall());
+        r1->SetSide(East, aDoor);
+        r1->SetSide(South, factory.MakeWall());
+        r1->SetSide(West, factory.MakeWall());
+        r2->SetSide(North, factory.MakeWall());
+        r2->SetSide(East, factory.MakeWall());
+        r2->SetSide(South, factory.MakeWall());
+        r2->SetSide(West, aDoor);
+        return aMaze;
+    }
+
+    // ConcreteFactory
+    class EnchantedMazeFactory : public MazeFactory {
+    public:
+        EnchantedMazeFactory();
+        virtual Room* MakeRoom(int n) const
+            { return new EnchantedRoom(n, CastSpell()); }
+        virtual Door* MakeDoor(Room* r1, Room* r2) const
+            { return new DoorNeedingSpell(r1, r2); }
+    protected:
+        Spell* CastSpell() const;
+    };
+
+    // ConcreteFactory
+    Wall* BombedMazeFactory::MakeWall () const {
+        return new BombedWall;
+    }
+    Room* BombedMazeFactory::MakeRoom(int n) const {
+        return new RoomWithABomb(n);
+    }   
+
+    MazeGame game;
+    BombedMazeFactory factory;
+
+    game.CreateMaze(factory);
 
 Example
 -------

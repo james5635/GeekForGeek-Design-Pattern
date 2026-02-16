@@ -9,6 +9,9 @@ Builder Pattern separate the construction of a complex object from its represent
 UML Class Diagram
 -----------------
 
+.. image:: ../_static/builder.drawio.png
+    :align: center
+
 Participant
 -----------
 
@@ -21,6 +24,7 @@ Usage
 -----
 
 Use the Builder pattern when:
+
 - the algorithm for creating a complex object should be independent of the parts that make up the object and how they're assembled.
 - the construction process must allow different representations for the object that's constructed.
 
@@ -38,6 +42,124 @@ Implementation
 - Assembly and construction interface
 - Why no abstract class for products?
 - Empty methods as default in Builder
+
+Sample Code
+-----------
+
+.. code-block:: cpp
+
+    class MazeBuilder {
+    public:
+        virtual void BuildMaze() { }
+        virtual void BuildRoom(int room) { }
+        virtual void BuildDoor(int roomFrom, int roomTo) { }
+        virtual Maze* GetMaze() { return 0; }
+    protected:
+        MazeBuilder();
+    };
+
+    Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
+        builder.BuildMaze();
+        builder.BuildRoom(1);
+        builder.BuildRoom(2);
+        builder.BuildDoor(1, 2);
+        return builder.GetMaze();
+    }
+
+    Maze* MazeGame::CreateComplexMaze (MazeBuilder& builder) {
+        builder.BuildRoom(1);
+        // ...
+        builder.BuildRoom(1001);
+        return builder.GetMaze();
+    }
+
+    class StandardMazeBuilder : public MazeBuilder {
+    public:
+        StandardMazeBuilder();
+        virtual void BuildMaze();
+        virtual void BuildRoom(int);
+        virtual void BuildDoor(int, int);
+        virtual Maze* GetMaze();
+    private:
+        Direction CommonWall(Room*, Room*);
+        Maze* _currentMaze;
+    };
+
+    StandardMazeBuilder::StandardMazeBuilder () {
+        _currentMaze = 0;
+    }
+
+    void StandardMazeBuilder::BuildMaze () {
+        _currentMaze = new Maze;
+    }
+    Maze* StandardMazeBuilder::GetMaze () {
+        return _currentMaze;
+    }
+
+    void StandardMazeBuilder::BuildRoom (int n) {
+        if (!_currentMaze->RoomNo(n)) {
+            Room* room = new Room(n);
+            _currentMaze->AddRoom(room);
+            room->SetSide(North, new Wall);
+            room->SetSide(South, new Wall);
+            room->SetSide(East, new Wall);
+            room->SetSide(West, new Wall);
+        }
+    }
+        
+    void StandardMazeBuilder:rBuildDoor (int nl, int n2) {
+        Room* rl = _currentMaze->RoomNo(nl);
+        Room* r2 = _currentMaze->RoomNo(n2);
+        Door* d = new Door(rl, r2);
+        rl->SetSide(CommonWall(rl,r2), d);
+        r2->SetSide(CommonWall(r2,rl), d);
+    }
+
+    Maze* maze;
+    MazeGame game;
+    StandardMazeBuilder builder;
+    game.CreateMaze(builder);
+    maze = builder.GetMaze();
+
+    class CountingMazeBuilder : public MazeBuilder {
+    public:
+        CountingMazeBuilder();
+        virtual void BuildMaze();
+        virtual void BuildRoom(int);
+        virtual void BuildDoor(int, int);
+        virtual void AddWall(int, Direction);
+        void GetCounts(int&, int&) const;
+    private:
+        int _doors;
+        int _rooms;
+    };
+
+    CountingMazeBuilder::CountingMazeBuilder () {
+        _rooms = _doors = 0;
+    }
+    void CountingMazeBuilder::BuildRoom (int) {
+        _rooms++;
+    }
+    void CountingMazeBuilder::BuildDoor (int, int) {
+        _doors++;
+    }
+    void CountingMazeBuilder::GetCounts (
+        int& rooms, int& doors
+    ) const {
+        rooms = _rooms;
+        doors = _doors;
+    }
+
+    int rooms, doors;
+    MazeGame game;
+    CountingMazeBuilder builder;
+
+    game.CreateMaze(builder);
+    builder.GetCounts(rooms, doors);
+
+    cout << "The maze has "
+         << rooms << " rooms and "
+         << doors << " doors" << endl;
 
 Example
 -------
@@ -210,7 +332,10 @@ When assembling a computer, we must install CPU, RAM, Storage, and GPU. Differen
     }
 
 3. Email Builder [Fluent Builder Pattern]
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../_static/fluent_builder.drawio.png
+    :align: center
 
 A SaaS platform sends different kinds of emails (welcome, invoice, marketing). Every email needs From, To, and Subject, but CC, BCC, body type, and attachments are optional. The Builder pattern makes creating these emails clean, safe, and readable.
 
