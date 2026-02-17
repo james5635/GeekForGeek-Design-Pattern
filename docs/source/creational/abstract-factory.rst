@@ -115,8 +115,8 @@ Sample Code
 Example
 -------
 
-1. Cross-Platform GUI Components (Windows vs macOS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Cross-Platform GUI Components
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You are building a Java desktop application that must look native on both Windows and macOS. Buttons and checkboxes should render differently on each OS, but your business logic (the client code) should never know or care about the concrete classes — it should only work with abstract interfaces.
 
@@ -201,8 +201,8 @@ You are building a Java desktop application that must look native on both Window
         }
     }
 
-2. Furniture Sets for Different Styles (Modern vs Victorian)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2. Furniture Sets for Different Styles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A furniture company sells complete room sets (Chair + Sofa) in two styles: Modern and Victorian. You must guarantee that a customer who chooses Modern gets a Modern chair AND a Modern sofa — never a mix. The sales system should work with any style without changing client code.
 
@@ -285,8 +285,8 @@ A furniture company sells complete room sets (Chair + Sofa) in two styles: Moder
         }
     }
 
-3. Database DAOs for Different Vendors (MySQL vs PostgreSQL)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Database DAOs for Different Vendors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your enterprise application must support both MySQL and PostgreSQL. You have UserDAO and OrderDAO. Switching databases should require changing only one line of code (the factory), never the service layer that uses the DAOs.
 

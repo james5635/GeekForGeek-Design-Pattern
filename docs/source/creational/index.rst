@@ -68,3 +68,4 @@ Creational Design Pattern
 
     abstract-factory
     builder
+    factory-method
