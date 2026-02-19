@@ -10,3 +10,4 @@ Design Pattern documentation
    :maxdepth: 2
 
    creational/index
+   summary
