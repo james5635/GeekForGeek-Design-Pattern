@@ -9,7 +9,7 @@ Ensure a class only has one instance, and provide a global point of access to it
 UML Class Diagram
 -----------------
 
-.. .. image:: ../_static/prototype.drawio.png
+.. image:: ../_static/singleton.drawio.png
     :align: center
 
 Participant
@@ -101,7 +101,9 @@ A desktop printing application must manage all print jobs through a single queue
         private static volatile PrinterSpooler instance;
         private final Queue<String> printQueue = new LinkedList<>();
     
-        private PrinterSpooler() {
+        // private => 100%
+        // protected => 80%
+        private PrinterSpooler() { 
             System.out.println("🖨️ PrinterSpooler initialized");
         }
     
@@ -185,6 +187,7 @@ A banking or order management system needs to generate unique sequential IDs (tr
     }
     
 3. Theme Manager
+~~~~~~~~~~~~~~~~
 
 A Java Swing or JavaFX application must apply the same visual theme (light/dark mode, colors) to every screen and component. A single ThemeManager ensures consistent UI appearance without passing theme objects everywhere.
 
