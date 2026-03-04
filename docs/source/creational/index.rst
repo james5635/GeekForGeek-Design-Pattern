@@ -70,3 +70,4 @@ Creational Design Pattern
     builder
     factory-method
     prototype
+    singleton
