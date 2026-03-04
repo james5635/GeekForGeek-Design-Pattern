@@ -9,7 +9,8 @@ Specify the kinds of objects to create using a prototypical instance, and create
 UML Class Diagram
 -----------------
 
-TODO 📝
+.. image:: ../_static/prototype.drawio.png
+    :align: center
 
 Participant
 -----------
