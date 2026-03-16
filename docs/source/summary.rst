@@ -31,6 +31,7 @@ Creational
 | Singleton        | S           | Implementing Global Access Points in Java Applications |
 +------------------+-------------+--------------------------------------------------------+
 
+Explicit Client: Abstract Factory, Prototype
 
 Structural
 ----------
@@ -52,6 +53,9 @@ Structural
 +------------------+-------------+-----------------------------------------------------------+
 | Proxy            | PRS         | Enhancing Security and Control with Smart Proxies         |
 +------------------+-------------+-----------------------------------------------------------+
+
+| Explicit Client: Adapter, Composite, Flyweight
+| Implicit Client: Bridge, Proxy
 
 Behavioral
 ----------
@@ -81,3 +85,6 @@ Behavioral
 +-------------------------+-------------+-----------------------------------------------------------------+
 | Visitor                 | CCEOV       | Implementing Robust Operations Across Diverse Object Structures |
 +-------------------------+-------------+-----------------------------------------------------------------+
+
+| Explicit Client: Chain of Responsibility, Command, Interpreter
+| Implicit Client: Iterator, Visitor
